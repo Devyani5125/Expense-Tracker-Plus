@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-wallet"></i> Expense Tracker</h1>
+            <button id="theme-toggle" class="btn-toggle"><i class="fas fa-moon"></i> Dark Mode</button>
+        </header>
+        
+        <div class="grid">
+            <!-- Monthly Budget Card -->
+            <div class="card budget-card">
+                <h2><i class="fas fa-piggy-bank"></i> Monthly Budget</h2>
+                <div class="input-group">
+                    <label for="budget">$</label>
+                    <input type="number" id="budget" placeholder="Set budget">
+                    <button id="set-budget" class="btn-primary"><i class="fas fa-check"></i></button>
+                </div>
+                <div id="budget-status" class="status"></div>
+            </div>
+            
+            <!-- Add Expense Card -->
+            <div class="card expense-card">
+                <h2><i class="fas fa-plus-circle"></i> Add Expense</h2>
+                <div class="input-group">
+                    <label for="amount">$</label>
+                    <input type="number" id="amount" placeholder="Amount" step="0.01" required>
+                </div>
+                <input type="text" id="item" placeholder="Item name" required>
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Food"><i class="fas fa-utensils"></i> Food</option>
+                    <option value="Transport"><i class="fas fa-car"></i> Transport</option>
+                    <option value="Entertainment"><i class="fas fa-film"></i> Entertainment</option>
+                    <option value="Utilities"><i class="fas fa-lightbulb"></i> Utilities</option>
+                    <option value="Other"><i class="fas fa-question"></i> Other</option>
+                </select>
+                <button id="add-expense" class="btn-primary"><i class="fas fa-plus"></i> Add</button>
+            </div>
+            
+            <!-- Total Expense Card -->
+            <div class="card total-card">
+                <h2><i class="fas fa-calculator"></i> Total Expense</h2>
+                <div class="total-amount">$<span id="total">0.00</span></div>
+            </div>
+        </div>
+        
+        <!-- Reports Section -->
+        <div class="reports-section">
+            <h2><i class="fas fa-chart-bar"></i> Reports</h2>
+            <div class="report-buttons">
+                <button id="category-summary" class="btn-report"><i class="fas fa-tags"></i> Category Summary</button>
+                <button id="daily-report" class="btn-report"><i class="fas fa-calendar-day"></i> Daily Report</button>
+                <button id="monthly-report" class="btn-report"><i class="fas fa-calendar-alt"></i> Monthly Report</button>
+                <button id="export-csv" class="btn-report"><i class="fas fa-download"></i> Export CSV</button>
+            </div>
+        </div>
+        
+        <!-- Daily Pie Chart Card -->
+        <div class="card chart-card">
+            <h2><i class="fas fa-chart-pie"></i> Daily Expense Pie Chart</h2>
+            <div class="input-group">
+                <label for="chart-date">Date:</label>
+                <input type="date" id="chart-date" value="">
+                <button id="show-chart" class="btn-primary"><i class="fas fa-eye"></i> Show Chart</button>
+            </div>
+            <canvas id="pie-chart" width="300" height="300"></canvas>
+        </div>
+        
+        <!-- Display Area -->
+        <div id="display-area" class="output-area"></div>
+        
+        <!-- Chart -->
+        <div id="chart-area" class="chart-container"></div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
